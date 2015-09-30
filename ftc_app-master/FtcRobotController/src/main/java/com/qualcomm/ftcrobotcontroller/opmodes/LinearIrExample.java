@@ -75,7 +75,7 @@ public class LinearIrExample extends LinearOpMode {
       motorRight.setPower(-MOTOR_POWER);
       motorLeft.setPower(MOTOR_POWER);
     }
-
+/*
     // wait for the robot to center on the beacon
     while (irSeeker.getAngle() != 0) {
       waitOneHardwareCycle();
@@ -89,7 +89,7 @@ public class LinearIrExample extends LinearOpMode {
     while (irSeeker.getStrength() < HOLD_IR_SIGNAL_STRENGTH) {
       waitOneHardwareCycle();
     }
-
+*/
     // stop the motors
     motorRight.setPower(0);
     motorLeft.setPower(0);

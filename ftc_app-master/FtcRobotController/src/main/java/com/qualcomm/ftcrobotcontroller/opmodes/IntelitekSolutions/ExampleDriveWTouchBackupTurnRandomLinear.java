@@ -52,7 +52,7 @@ public class ExampleDriveWTouchBackupTurnRandomLinear extends LinearOpMode {
             }
 
             // Wait for a hardware cycle to allow other processes to run
-            waitOneHardwareCycle();
+            //waitOneHardwareCycle();
         }
 
     }
