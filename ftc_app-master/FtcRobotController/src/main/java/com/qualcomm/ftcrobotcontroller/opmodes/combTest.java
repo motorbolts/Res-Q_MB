@@ -3,7 +3,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class ExampleGripper2 extends OpMode {
+public class combTest extends OpMode {
 
     //final double LEFT_OPEN_POSITION = 0.0;
     //final double LEFT_CLOSED_POSITION = 0.5;
@@ -40,13 +40,13 @@ public class ExampleGripper2 extends OpMode {
         */
         if(gamepad1.b){
             rightComb.setPosition(RIGHT_OPEN_POSITION);
-            rightposition = 1.0;
+            rightposition = 0;
         }
         else{
             //leftComb.setPosition(LEFT_CLOSED_POSITION);
             rightComb.setPosition(RIGHT_CLOSED_POSITION);
             //leftposition = 0.5;
-            rightposition = 0.5;
+            rightposition = 1;
         }
 
         telemetry.addData("right", "right:  " + String.format("%.2f", rightposition));
