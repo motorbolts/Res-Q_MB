@@ -3,12 +3,12 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class combTest extends OpMode {
+public class CRTest extends OpMode {
 
     //final double LEFT_OPEN_POSITION = 0.0;
     //final double LEFT_CLOSED_POSITION = 0.5;
-    final double RIGHT_OPEN_POSITION = 0;
-    final double RIGHT_CLOSED_POSITION = 1;
+    final double RIGHT_OPEN_POSITION = 1.0;
+    final double RIGHT_CLOSED_POSITION = 0;
 
     //double leftposition;
     double rightposition;
@@ -25,7 +25,7 @@ public class combTest extends OpMode {
     @Override
     public void loop() {
         // This code will keep the gripper open as long as the button is
-         //pressed. When the button is released, the gripper is closed
+        //pressed. When the button is released, the gripper is closed
         /*
         if(gamepad1.x) {
             leftComb.setPosition(LEFT_OPEN_POSITION);
@@ -49,7 +49,7 @@ public class combTest extends OpMode {
             rightposition = 1;
         }
 
-        telemetry.addData("Right Comb", ":  " + String.format("%.2f", rightposition));
+        telemetry.addData("right", "right:  " + String.format("%.2f", rightposition));
         //telemetry.addData("left", "left:  " + String.format("%.2f", rightposition));
     }
     @Override
