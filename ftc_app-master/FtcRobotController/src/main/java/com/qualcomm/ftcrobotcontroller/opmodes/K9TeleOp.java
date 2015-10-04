@@ -79,9 +79,9 @@ public class K9TeleOp extends OpMode {
 	}
 
 	/*
-	 * Code to run when the op mode is initialized goes here
+	 * Code to run when the op mode is first enabled goes here
 	 * 
-	 * @see com.qualcomm.robotcore.eventloop.opmode.OpMode#init()
+	 * @see com.qualcomm.robotcore.eventloop.opmode.OpMode#start()
 	 */
 	@Override
 	public void init() {
@@ -145,7 +145,8 @@ public class K9TeleOp extends OpMode {
 
 		// scale the joystick value to make it easier to control
 		// the robot more precisely at slower speeds.
-
+		right = (float)scaleInput(right);
+		left =  (float)scaleInput(left);
 		
 		// write the values to the motors
 		motorRight.setPower(right);
@@ -183,6 +184,13 @@ public class K9TeleOp extends OpMode {
 
 
 
+		/*
+		 * Send telemetry data back to driver station. Note that if we are using
+		 * a legacy NXT-compatible motor controller, then the getPower() method
+		 * will return a null value. The legacy NXT-compatible motor controllers
+		 * are currently write only.
+		 */
+        telemetry.addData("Text", "*** Robot Data***");
         telemetry.addData("arm", "arm:  " + String.format("%.2f", armPosition));
         telemetry.addData("claw", "claw:  " + String.format("%.2f", clawPosition));
         telemetry.addData("left tgt pwr",  "left  pwr: " + String.format("%.2f", left));
@@ -199,7 +207,40 @@ public class K9TeleOp extends OpMode {
 	public void stop() {
 
 	}
-	
 
+    	
+	/*
+	 * This method scales the joystick input so for low joystick values, the 
+	 * scaled value is less than linear.  This is to make it easier to drive
+	 * the robot more precisely at slower speeds.
+	 */
+	double scaleInput(double dVal)  {
+		double[] scaleArray = { 0.0, 0.05, 0.09, 0.10, 0.12, 0.15, 0.18, 0.24,
+				0.30, 0.36, 0.43, 0.50, 0.60, 0.72, 0.85, 1.00, 1.00 };
+		
+		// get the corresponding index for the scaleInput array.
+		int index = (int) (dVal * 16.0);
+		
+		// index should be positive.
+		if (index < 0) {
+			index = -index;
+		}
+
+		// index cannot exceed size of array minus 1.
+		if (index > 16) {
+			index = 16;
+		}
+
+		// get value from the array.
+		double dScale = 0.0;
+		if (dVal < 0) {
+			dScale = -scaleArray[index];
+		} else {
+			dScale = scaleArray[index];
+		}
+
+		// return scaled value.
+		return dScale;
+	}
 
 }
