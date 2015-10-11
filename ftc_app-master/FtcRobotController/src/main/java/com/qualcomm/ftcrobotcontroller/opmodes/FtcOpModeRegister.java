@@ -31,8 +31,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package com.qualcomm.ftcrobotcontroller.opmodes;
 
-import com.qualcomm.ftcrobotcontroller.opmodes.MBTankDrive;
 import com.qualcomm.ftcrobotcontroller.opmodes.OurPrograms.CRLift;
+import com.qualcomm.ftcrobotcontroller.opmodes.OurPrograms.MBChassisOnly;
+import com.qualcomm.ftcrobotcontroller.opmodes.OurPrograms.MBTankDrive;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
@@ -61,6 +62,7 @@ public class FtcOpModeRegister implements OpModeRegister {
 
     manager.register("CRLift", CRLift.class);
     manager.register("MBTankDrive", MBTankDrive.class);
+    manager.register("MBChassisOnly", MBChassisOnly.class);
 
     manager.register("K9TeleOp", K9TeleOp.class);
     //manager.register ("PushBotAuto", PushBotAuto.class);
